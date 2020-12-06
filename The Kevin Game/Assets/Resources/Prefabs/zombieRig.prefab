@@ -672,6 +672,7 @@ GameObject:
   - component: {fileID: 1236909290541342093}
   - component: {fileID: 3601098565136785631}
   - component: {fileID: 6747133856104265461}
+  - component: {fileID: -2856723234890753519}
   m_Layer: 0
   m_Name: zombieRig
   m_TagString: ZombieTag
@@ -772,6 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a947857d271564d5999529ef02c42448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   zombieSpeed: 1
 --- !u!50 &6747133856104265461
 Rigidbody2D:
@@ -794,6 +796,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!195 &-2856723234890753519
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305481588083196593}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1704893331625889218
 GameObject:
   m_ObjectHideFlags: 0
