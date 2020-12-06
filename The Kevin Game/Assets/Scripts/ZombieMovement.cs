@@ -11,6 +11,7 @@ public class ZombieMovement : MonoBehaviour
     Transform target;
     //var moveSpeed = 3; //move speed
     public float zombieSpeed = 1f;
+    float rotationSpeed = 1f;
     //var rotationSpeed = 3; //speed of turning
 
 
@@ -24,16 +25,61 @@ public class ZombieMovement : MonoBehaviour
     void Update()
     {
         ZombieMovementFunc();
-        
+        //FlipZombieFunc();
+
+        if (target != null)
+        {
+            if (Vector3.Distance(transform.position, target.position) > .5f)
+            {
+                RotateTowards(target.position);
+            }
+
+        }
+
+
+            
+
     }
 
     void ZombieMovementFunc()
     {
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, zombieSpeed * Time.deltaTime);
+            Vector3 newTarget = target.transform.position;
+            newTarget = new Vector3(target.transform.position.x, target.transform.position.y - .4f, 0f);
+            transform.position = Vector3.MoveTowards(transform.position, newTarget, zombieSpeed * Time.deltaTime);
 
         }
+    }
+
+    private void RotateTowards(Vector2 target)
+    {
+        var offset = 0f;
+        Vector2 direction = target - (Vector2)transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle + offset, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void FlipZombieFunc()
+    {
+        if (target != null)
+        {
+            //if (target.position.x > transform.position.x)
+            //{
+            //    //face right
+            //    transform.localScale = new Vector3(.06f, .06f, 1f);
+            //}
+            //else if (target.position.x < transform.position.x)
+            //{
+            //    //face left
+            //    transform.localScale = new Vector3(-.06f, .06f, 1f);
+            //}
+
+            
+        }
+            
     }
 
 }
